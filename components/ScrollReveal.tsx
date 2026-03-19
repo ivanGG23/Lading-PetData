@@ -4,6 +4,11 @@ import { useEffect } from "react";
 
 export default function ScrollReveal() {
   useEffect(() => {
+    // Resetea el scroll al top cuando carga la página
+    window.history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+
+    // Scroll reveal
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
