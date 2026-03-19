@@ -1,6 +1,16 @@
-import Link from "next/link";
+"use client";
 
 export default function Hero() {
+  const scrollTo = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    const target = document.getElementById(id);
+    if (target) {
+      const navHeight = 60;
+      const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="hero">
       <div className="hero-pill">🐾 México · Rescate Animal</div>
@@ -14,12 +24,12 @@ export default function Hero() {
         o maltrato. Descarga la app y empieza a ayudar hoy.
       </p>
       <div className="hero-actions">
-        <Link href="#descargar" className="btn-white">
+        <a href="#descargar" onClick={scrollTo("descargar")} className="btn-white">
           ⬇ Descargar APK
-        </Link>
-        <Link href="#como-funciona" className="btn-outline">
+        </a>
+        <a href="#como-funciona" onClick={scrollTo("como-funciona")} className="btn-outline">
           ¿Cómo funciona?
-        </Link>
+        </a>
       </div>
     </div>
   );
