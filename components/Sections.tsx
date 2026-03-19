@@ -1,8 +1,8 @@
 /* ── Stats Band ─────────────────────────────────────────── */
 export function StatsBand() {
   const stats = [
-    { num: "+856", label: "Animales rescatados" },
-    { num: "GPS",  label: "Ubicación en tiempo real" },
+    { num: "Mapa", label: "Zonas con más incidencia de reportes" },
+    { num: "GPS",  label: "Ubicación de cada reporte" },
     { num: "3",    label: "Roles de usuario" },
     { num: "100%", label: "Trazabilidad de casos" },
   ];
@@ -144,6 +144,90 @@ export function Roles() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Install Guide ───────────────────────────────────────── */
+const installSteps = [
+  {
+    num: "01",
+    icon: "⬇️",
+    title: "Descarga el APK",
+    desc: 'Presiona el botón "Descargar APK" y espera a que el archivo termine de descargarse en tu dispositivo.',
+  },
+  {
+    num: "02",
+    icon: "⚙️",
+    title: 'Activa "Fuentes desconocidas"',
+    desc: 'Ve a Ajustes → Seguridad → activa "Instalar apps de fuentes desconocidas" o "Permitir de esta fuente" según tu Android.',
+  },
+  {
+    num: "03",
+    icon: "📂",
+    title: "Abre el archivo descargado",
+    desc: 'Busca el archivo en tu carpeta de Descargas y tócalo. También puede aparecer una notificación directa al terminar la descarga.',
+  },
+  {
+    num: "04",
+    icon: "✅",
+    title: "Instala y abre PetData",
+    desc: "Toca Instalar, espera unos segundos y listo. Abre la app, crea tu cuenta y empieza a ayudar.",
+  },
+];
+
+export function InstallGuide() {
+  return (
+    <div className="how-section" id="instalar">
+      <div className="container">
+        <div className="reveal">
+          <span className="section-label">Instalación</span>
+          <div className="section-title">
+            ¿Cómo instalar
+            <br />
+            <em>PetData</em>?
+          </div>
+          <p className="section-desc">
+            Solo necesitas tu celular Android y menos de 2 minutos. Sigue estos pasos:
+          </p>
+        </div>
+
+        <div className="steps-grid" style={{ marginTop: "2.5rem" }}>
+          {installSteps.map((s) => (
+            <div key={s.num} className="step-card reveal">
+              <div className="step-num">{s.icon}</div>
+              <div className="step-title">{s.title}</div>
+              <div className="step-desc">{s.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Nota de ayuda extra */}
+        <div
+          className="reveal"
+          style={{
+            marginTop: "2rem",
+            background: "var(--white)",
+            border: "1px solid var(--green-pale2)",
+            borderLeft: "4px solid var(--green)",
+            borderRadius: "12px",
+            padding: "1.2rem 1.5rem",
+            maxWidth: 600,
+            margin: "2rem auto 0",
+          }}
+        >
+          <div style={{ fontWeight: 800, fontSize: "0.95rem", marginBottom: "0.4rem" }}>
+            ⚠️ ¿Tu Android bloquea la instalación?
+          </div>
+          <div style={{ fontSize: "0.88rem", color: "var(--text-sec)", lineHeight: 1.6 }}>
+            Es normal. Android pide confirmación para apps fuera de Play Store por seguridad.
+            El proceso varía un poco según tu marca:{" "}
+            <strong>Samsung</strong>, <strong>Xiaomi</strong> y <strong>Motorola</strong> tienen
+            el ajuste en lugares distintos, pero siempre está en <em>Ajustes → Seguridad</em> o
+            dentro del propio instalador de archivos.
+          </div>
         </div>
       </div>
     </div>

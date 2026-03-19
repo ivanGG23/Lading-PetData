@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import PhoneMockups from "@/components/PhoneMockups";
-import { StatsBand, Features, HowItWorks, Roles } from "@/components/Sections";
+import { StatsBand, Features, HowItWorks, Roles, InstallGuide } from "@/components/Sections"; // ✅ todo junto
 import Download from "@/components/Download";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -9,9 +9,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 export default function Home() {
   return (
     <>
-      {/* Activates .reveal animations on scroll */}
       <ScrollReveal />
-
       <Navbar />
       <Hero />
       <PhoneMockups />
@@ -19,8 +17,9 @@ export default function Home() {
       <Features />
       <HowItWorks />
       <Roles />
+      <InstallGuide /> {/* ✅ antes de Download */}
       <Download />
-      <Footer />
+      <Footer />      {/* ✅ Footer siempre al final */}
     </>
   );
 }
