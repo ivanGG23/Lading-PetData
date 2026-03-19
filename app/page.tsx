@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import PhoneMockups from "@/components/PhoneMockups";
-import { StatsBand, Features, HowItWorks, Roles, InstallGuide } from "@/components/Sections"; // ✅ todo junto
+import { StatsBand, Features, HowItWorks, Roles, InstallGuide } from "@/components/Sections";
 import Download from "@/components/Download";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -17,9 +17,9 @@ export default function Home() {
       <Features />
       <HowItWorks />
       <Roles />
-      <InstallGuide /> {/* ✅ antes de Download */}
+      <InstallGuide />
       <Download />
-      <Footer />      {/* ✅ Footer siempre al final */}
+      <Footer />
     </>
   );
 }

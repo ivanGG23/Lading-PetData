@@ -1,3 +1,4 @@
+"use client";
 /* ── Stats Band ─────────────────────────────────────────── */
 export function StatsBand() {
   const stats = [
@@ -190,7 +191,7 @@ export function InstallGuide() {
             <em>PetData</em>?
           </div>
           <p className="section-desc">
-            Solo necesitas tu celular Android y menos de 2 minutos. Sigue estos pasos:
+            Solo necesitas tu celular Android y menos de 5 minutos. Sigue estos pasos:
           </p>
         </div>
 
@@ -204,31 +205,115 @@ export function InstallGuide() {
           ))}
         </div>
 
-        {/* Nota de ayuda extra */}
+        {/* FAQ de problemas comunes */}
         <div
           className="reveal"
           style={{
-            marginTop: "2rem",
-            background: "var(--white)",
-            border: "1px solid var(--green-pale2)",
-            borderLeft: "4px solid var(--green)",
-            borderRadius: "12px",
-            padding: "1.2rem 1.5rem",
-            maxWidth: 600,
-            margin: "2rem auto 0",
+            marginTop: "3rem",
+            maxWidth: 640,
+            margin: "3rem auto 0",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
           }}
         >
-          <div style={{ fontWeight: 800, fontSize: "0.95rem", marginBottom: "0.4rem" }}>
-            ⚠️ ¿Tu Android bloquea la instalación?
+          <div style={{
+            fontWeight: 800,
+            fontSize: "0.75rem",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            color: "var(--green)",
+            marginBottom: "0.25rem",
+          }}>
+            Preguntas frecuentes
           </div>
-          <div style={{ fontSize: "0.88rem", color: "var(--text-sec)", lineHeight: 1.6 }}>
-            Es normal. Android pide confirmación para apps fuera de Play Store por seguridad.
-            El proceso varía un poco según tu marca:{" "}
-            <strong>Samsung</strong>, <strong>Xiaomi</strong> y <strong>Motorola</strong> tienen
-            el ajuste en lugares distintos, pero siempre está en <em>Ajustes → Seguridad</em> o
-            dentro del propio instalador de archivos.
-          </div>
+
+          {[
+            {
+              icon: "🔒",
+              title: "¿Tu Android bloquea la instalación?",
+              body: (
+                <>
+                  Es normal. Android pide confirmación para apps fuera de Play Store por seguridad.
+                  El ajuste está en <em>Ajustes → Seguridad → Fuentes desconocidas</em>. En{" "}
+                  <strong>Samsung</strong>, <strong>Xiaomi</strong> y <strong>Motorola</strong> puede
+                  aparecer directamente en el instalador de archivos al intentar abrir el APK.
+                </>
+              ),
+            },
+            {
+              icon: "🐢",
+              title: "¿La descarga tarda más de lo esperado?",
+              body: (
+                <>
+                  Puede ocurrir por conexión lenta o un error puntual. Si el archivo tarda más de
+                  lo normal, cancela la descarga y vuelve a intentarlo. Si el problema persiste,
+                  recarga la página e inténtalo de nuevo con buena señal de WiFi o datos.
+                </>
+              ),
+            },
+          ].map((faq) => (
+            <div
+              key={faq.title}
+              style={{
+                background: "var(--white)",
+                border: "1px solid var(--green-pale2)",
+                borderLeft: "4px solid var(--green)",
+                borderRadius: "12px",
+                padding: "1.2rem 1.5rem",
+              }}
+            >
+              <div style={{
+                fontWeight: 800,
+                fontSize: "0.95rem",
+                marginBottom: "0.5rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+              }}>
+                <span>{faq.icon}</span>
+                {faq.title}
+              </div>
+              <div style={{ fontSize: "0.88rem", color: "var(--text-sec)", lineHeight: 1.7 }}>
+                {faq.body}
+              </div>
+            </div>
+          ))}
         </div>
+
+        {/* CTA al final */}
+        <div className="reveal" style={{ textAlign: "center", marginTop: "2.5rem" }}>
+          <a
+            href="#descargar"
+            onClick={(e) => {
+              e.preventDefault();
+              const target = document.getElementById("descargar");
+              if (target) {
+                const top = target.getBoundingClientRect().top + window.scrollY - 60;
+                window.scrollTo({ top, behavior: "smooth" });
+              }
+            }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              background: "var(--green)",
+              color: "var(--white)",
+              fontWeight: 800,
+              fontSize: "1rem",
+              padding: "0.85rem 2rem",
+              borderRadius: "100px",
+              textDecoration: "none",
+              transition: "transform 0.15s, box-shadow 0.15s",
+            }}
+          >
+            ⬇ Ir a descargar PetData
+          </a>
+          <p style={{ marginTop: "0.75rem", fontSize: "0.8rem", color: "var(--text-sec)" }}>
+            Android 8.0 o superior · Archivo seguro · Gratis
+          </p>
+        </div>
+
       </div>
     </div>
   );
